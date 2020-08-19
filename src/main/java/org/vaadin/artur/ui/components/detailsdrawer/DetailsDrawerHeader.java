@@ -13,7 +13,6 @@ import org.vaadin.artur.ui.layout.size.Right;
 import org.vaadin.artur.ui.layout.size.Vertical;
 import org.vaadin.artur.ui.util.BoxShadowBorders;
 import org.vaadin.artur.ui.util.UIUtils;
-import org.vaadin.artur.ui.util.css.FlexDirection;
 
 public class DetailsDrawerHeader extends FlexBoxLayout {
 

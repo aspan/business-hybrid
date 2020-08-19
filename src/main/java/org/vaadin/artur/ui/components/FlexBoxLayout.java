@@ -1,12 +1,19 @@
 package org.vaadin.artur.ui.components;
 
+import java.util.ArrayList;
+import java.util.Locale;
+
+import org.vaadin.artur.ui.layout.size.Size;
+import org.vaadin.artur.ui.util.css.BorderRadius;
+import org.vaadin.artur.ui.util.css.BoxSizing;
+import org.vaadin.artur.ui.util.css.Display;
+import org.vaadin.artur.ui.util.css.Overflow;
+import org.vaadin.artur.ui.util.css.Position;
+import org.vaadin.artur.ui.util.css.Shadow;
+
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.theme.lumo.Lumo;
-import org.vaadin.artur.ui.layout.size.Size;
-import org.vaadin.artur.ui.util.css.*;
-
-import java.util.ArrayList;
 
 public class FlexBoxLayout extends FlexLayout {
 
@@ -78,7 +85,7 @@ public class FlexBoxLayout extends FlexLayout {
 	}
 
 	public void setFlexDirection(FlexDirection direction) {
-		getStyle().set(FLEX_DIRECTION, direction.getValue());
+		getStyle().set(FLEX_DIRECTION, direction.name().toLowerCase(Locale.ROOT).replace('_', '-'));
 	}
 
 	public void removeFlexDirection() {
@@ -92,7 +99,7 @@ public class FlexBoxLayout extends FlexLayout {
 	}
 
 	public void setFlexWrap(FlexWrap wrap) {
-		getStyle().set(FLEX_WRAP, wrap.getValue());
+		getStyle().set(FLEX_WRAP, wrap.name().toLowerCase(Locale.ROOT).replace('_', '-'));
 	}
 
 	public void removeFlexWrap() {

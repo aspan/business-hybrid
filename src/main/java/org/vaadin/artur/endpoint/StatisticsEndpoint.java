@@ -1,9 +1,9 @@
 package org.vaadin.artur.endpoint;
 
-import com.vaadin.flow.server.connect.VaadinService;
+import com.vaadin.flow.server.connect.Endpoint;
 import com.vaadin.flow.server.connect.auth.AnonymousAllowed;
 
-@VaadinService
+@Endpoint
 @AnonymousAllowed
 public class StatisticsEndpoint {
 

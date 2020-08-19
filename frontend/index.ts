@@ -12,7 +12,7 @@ const { serverSideRoutes } = new Flow({
 // Router configuration which defines "" and "statistics" as client side routes. Entering any of these will load the corresponding TS file lazily.
 // For all other routes, routing is delegated to the server to classes annotated with @Route
 // Both server and client side routes use the client side `<main-layout>` component as parent layout
-const clientSideRoutes: Router.RouteWithAction[] = [
+const clientSideRoutes: Router.Route[] = [
   {
     path: "",
     action: async (_context, _commands) => {

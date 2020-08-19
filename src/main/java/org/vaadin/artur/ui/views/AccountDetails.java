@@ -2,6 +2,21 @@ package org.vaadin.artur.ui.views;
 
 import java.time.LocalDate;
 
+import org.vaadin.artur.backend.BankAccount;
+import org.vaadin.artur.backend.DummyData;
+import org.vaadin.artur.ui.components.FlexBoxLayout;
+import org.vaadin.artur.ui.components.ListItem;
+import org.vaadin.artur.ui.layout.size.Bottom;
+import org.vaadin.artur.ui.layout.size.Horizontal;
+import org.vaadin.artur.ui.layout.size.Top;
+import org.vaadin.artur.ui.layout.size.Vertical;
+import org.vaadin.artur.ui.util.BoxShadowBorders;
+import org.vaadin.artur.ui.util.LumoStyles;
+import org.vaadin.artur.ui.util.TextColor;
+import org.vaadin.artur.ui.util.UIUtils;
+import org.vaadin.artur.ui.util.css.BorderRadius;
+import org.vaadin.artur.ui.util.css.WhiteSpace;
+
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
@@ -16,27 +31,12 @@ import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
+import com.vaadin.flow.component.orderedlayout.FlexLayout.FlexDirection;
+import com.vaadin.flow.component.orderedlayout.FlexLayout.FlexWrap;
 import com.vaadin.flow.router.BeforeEvent;
 import com.vaadin.flow.router.HasUrlParameter;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-
-import org.vaadin.artur.backend.BankAccount;
-import org.vaadin.artur.backend.DummyData;
-import org.vaadin.artur.ui.components.FlexBoxLayout;
-import org.vaadin.artur.ui.components.ListItem;
-import org.vaadin.artur.ui.layout.size.Bottom;
-import org.vaadin.artur.ui.layout.size.Horizontal;
-import org.vaadin.artur.ui.layout.size.Top;
-import org.vaadin.artur.ui.layout.size.Vertical;
-import org.vaadin.artur.ui.util.BoxShadowBorders;
-import org.vaadin.artur.ui.util.LumoStyles;
-import org.vaadin.artur.ui.util.TextColor;
-import org.vaadin.artur.ui.util.UIUtils;
-import org.vaadin.artur.ui.util.css.BorderRadius;
-import org.vaadin.artur.ui.util.css.FlexDirection;
-import org.vaadin.artur.ui.util.css.FlexWrap;
-import org.vaadin.artur.ui.util.css.WhiteSpace;
 
 @PageTitle("Account Details")
 @Route(value = "account-details")

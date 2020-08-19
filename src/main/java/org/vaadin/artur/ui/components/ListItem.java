@@ -10,7 +10,6 @@ import org.vaadin.artur.ui.layout.size.Wide;
 import org.vaadin.artur.ui.util.FontSize;
 import org.vaadin.artur.ui.util.TextColor;
 import org.vaadin.artur.ui.util.UIUtils;
-import org.vaadin.artur.ui.util.css.FlexDirection;
 import org.vaadin.artur.ui.util.css.WhiteSpace;
 
 @CssImport("./styles/components/list-item.css")

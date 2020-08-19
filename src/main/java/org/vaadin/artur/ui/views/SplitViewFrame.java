@@ -1,14 +1,14 @@
 package org.vaadin.artur.ui.views;
 
+import org.vaadin.artur.ui.components.FlexBoxLayout;
+
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.HasStyle;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
-
-import org.vaadin.artur.ui.components.FlexBoxLayout;
-import org.vaadin.artur.ui.util.css.FlexDirection;
+import com.vaadin.flow.component.orderedlayout.FlexLayout.FlexDirection;
 
 /**
  * A view frame that establishes app design guidelines. It consists of four

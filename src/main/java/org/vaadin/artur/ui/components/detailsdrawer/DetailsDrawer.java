@@ -3,7 +3,6 @@ package org.vaadin.artur.ui.components.detailsdrawer;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.dependency.CssImport;
 import org.vaadin.artur.ui.components.FlexBoxLayout;
-import org.vaadin.artur.ui.util.css.FlexDirection;
 
 @CssImport("./styles/components/details-drawer.css")
 public class DetailsDrawer extends FlexBoxLayout {

@@ -34,7 +34,6 @@ import org.vaadin.artur.ui.util.LumoStyles;
 import org.vaadin.artur.ui.util.TextColor;
 import org.vaadin.artur.ui.util.UIUtils;
 import org.vaadin.artur.ui.util.css.BoxSizing;
-import org.vaadin.artur.ui.util.css.FlexDirection;
 import org.vaadin.artur.ui.util.css.Overflow;
 import org.vaadin.artur.ui.util.css.PointerEvents;
 import org.vaadin.artur.ui.util.css.TextOverflow;

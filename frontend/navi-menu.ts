@@ -1,5 +1,6 @@
 import { css, customElement, html, LitElement, property } from "lit-element";
 import { globalCss } from "./global-styles";
+import { Router } from "@vaadin/router";
 import "./navi-item";
 import "@vaadin/vaadin-icons";
 import "@vaadin/vaadin-button";
