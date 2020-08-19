@@ -25,7 +25,10 @@ export class NaviDrawer extends LitElement {
   railButtonIcon: string = "vaadin:chevron-left-small";
   @property()
   railButtonAriaLabel: string = "Collapse menu";
-  railMode: boolean = false;
+  @property({ type: Boolean })
+  rail: boolean = false;
+  @property({ type: Boolean })
+  isMouseOver: boolean = false;
 
   static get styles() {
     return css`
@@ -148,7 +151,6 @@ export class NaviDrawer extends LitElement {
 
         .navi-drawer[rail]:not([open]):not(:hover) .account-switcher__title,
         .navi-drawer[rail]:not([open]):not(:hover) .account-switcher__email,
-        .navi-drawer[rail]:not([open]):not(:hover) .brand-expression__title,
         .navi-drawer[rail]:not([open]):not(:hover) .navi-item[level],
         .navi-drawer[rail]:not([open]):not(:hover) .navi-item__link span,
         .navi-drawer[rail]:not([open]):not(:hover) .navi-item vaadin-button {
@@ -167,10 +169,10 @@ export class NaviDrawer extends LitElement {
   }
   render() {
     return html`
-      <div class="navi-drawer" ?open="${this.open}">
+      <div class="navi-drawer" ?open="${this.open}" ?rail="${this.rail}">
         <div class="navi-drawer__scrim" @click="${() => this._close()}"></div>
         <div class="navi-drawer__content">
-          <brand-expression text="Client-Side-Views"></brand-expression>
+          <brand-expression text="Client-Side-Views" ?open="${this.open}" ?rail="${this.rail}" ?isMouseOver="${this.isMouseOver}"></brand-expression>
           <div class="navi-drawer__scroll-area">
             <navi-menu></navi-menu>
           </div>
@@ -206,6 +208,8 @@ export class NaviDrawer extends LitElement {
       },
       this.scrim
     );
+    this.addEventListener('mouseover', this.mouseOverHandler);
+    this.addEventListener('mouseout', this.mouseOutHandler);
   }
 
   toggle() {
@@ -238,14 +242,21 @@ export class NaviDrawer extends LitElement {
     }, 250);
   }
 
+  mouseOverHandler() {
+    this.isMouseOver = true;
+  }
+  mouseOutHandler() {
+    this.isMouseOver = false;
+  }
+
   _toggleRailMode() {
-    if (this.railMode) {
-      this.railMode = false;
+    if (this.rail) {
+      this.rail = false;
       this.railButtonIcon = "vaadin:chevron-left-small";
       this.railButtonText = "Collapse";
       this.railButtonAriaLabel = "Collapse menu";
     } else {
-      this.railMode = true;
+      this.rail = true;
       this.railButtonIcon = "vaadin:chevron-right-small";
       this.railButtonText = "Expand";
       this.railButtonAriaLabel = "Expand menu";

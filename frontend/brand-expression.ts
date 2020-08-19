@@ -4,6 +4,12 @@ import { globalCss } from "./global-styles";
 export class BrandExpression extends LitElement {
   @property()
   text: string = "";
+  @property({ type: Boolean })
+  open: boolean = false;
+  @property({ type: Boolean })
+  rail: boolean = false;
+  @property({ type: Boolean })
+  isMouseOver: boolean = false;
 
   static get styles() {
     return [
@@ -28,12 +34,18 @@ export class BrandExpression extends LitElement {
         .brand-expression__title {
           margin-left: var(--lumo-space-s);
         }
+        
+        @media (min-width: 1024px) {
+          .brand-expression[rail]:not([open]):not([isMouseOver]) .brand-expression__title {
+             display: none;
+          }
+        }
       `
     ];
   }
   render() {
     return html`
-      <div class="brand-expression">
+      <div class="brand-expression" ?open="${this.open}" ?rail="${this.rail}" ?isMouseOver="${this.isMouseOver}">
         <img
           class="brand-expression__logo"
           src="images/logos/18.png"
