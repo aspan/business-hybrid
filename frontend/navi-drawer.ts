@@ -17,7 +17,7 @@ export class NaviDrawer extends LitElement {
   mainContent: any;
   @query(".navi-drawer__scrim")
   scrim: any;
-  @property({ type: Boolean })
+  @property({ type: Boolean, reflect: true })
   open: boolean = false;
   @property()
   railButtonText: string = "Collapse";
@@ -25,7 +25,7 @@ export class NaviDrawer extends LitElement {
   railButtonIcon: string = "vaadin:chevron-left-small";
   @property()
   railButtonAriaLabel: string = "Collapse menu";
-  @property({ type: Boolean })
+  @property({ type: Boolean, reflect: true })
   rail: boolean = false;
   @property({ type: Boolean })
   isMouseOver: boolean = false;
@@ -105,11 +105,6 @@ export class NaviDrawer extends LitElement {
 
       .navi-drawer[rail]:not([open]):hover .navi-drawer__content {
         width: var(--navi-drawer-width);
-      }
-
-      /* Push the content in rail mode. */
-      .navi-drawer[rail]:not([open]) + .root__column {
-        padding-left: var(--navi-drawer-rail-width);
       }
 
       @media (max-width: 1023px) {
