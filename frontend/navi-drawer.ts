@@ -161,7 +161,7 @@ export class NaviDrawer extends LitElement {
       <div class="navi-drawer" ?open="${this.open}" ?rail="${this.rail}">
         <div class="navi-drawer__scrim" @click="${() => this._close()}"></div>
         <div class="navi-drawer__content">
-          <brand-expression text="Client-Side-Views" ?open="${this.open}" ?rail="${this.rail}" ?isMouseOver="${this.isMouseOver}"></brand-expression>
+          <brand-expression text="Client-Side-Views" ?open="${this.open}" ?rail="${this.rail}" ?isMenuExpanded="${this.isMouseOver}"></brand-expression>
           <div class="navi-drawer__scroll-area">
             <navi-menu></navi-menu>
           </div>

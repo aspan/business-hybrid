@@ -10,7 +10,7 @@ export class BrandExpression extends LitElement {
     @property({type: Boolean})
     rail: boolean = false;
     @property({type: Boolean})
-    isMouseOver: boolean = false;
+    isMenuExpanded: boolean = false;
 
     static get styles() {
         return [
@@ -37,7 +37,7 @@ export class BrandExpression extends LitElement {
         }
         
         @media (min-width: 1024px) {
-          .brand-expression[rail]:not([open]):not([isMouseOver]) .brand-expression__title {
+          .brand-expression[rail]:not([open]):not([isMenuExpanded]) .brand-expression__title {
              display: none;
           }
         }
@@ -47,7 +47,7 @@ export class BrandExpression extends LitElement {
 
     render() {
         return html`
-      <div class="brand-expression" ?open="${this.open}" ?rail="${this.rail}" ?isMouseOver="${this.isMouseOver}">
+      <div class="brand-expression" ?open="${this.open}" ?rail="${this.rail}" ?isMenuExpanded="${this.isMenuExpanded}">
         <img
           class="brand-expression__logo"
           src="images/logos/18.png"

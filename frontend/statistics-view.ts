@@ -333,14 +333,18 @@ export class StatisticsView extends LitElement {
     `;
     }
 
-    async connectedCallback() {
-        super.connectedCallback();
+    async performUpdate() {
+        await this.updateData()
+        super.performUpdate();
+    }
 
+    async updateData() {
         this.transactionValues = await StatisticsEndpoint.getTransactionData(2019);
         const statusData = await StatisticsEndpoint.getPaymentData();
         this.pending = statusData[0];
         this.submitted = statusData[1];
         this.confirmed = statusData[2];
         this.failed = statusData[3];
+
     }
 }
