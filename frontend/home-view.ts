@@ -1,12 +1,13 @@
-import { css, customElement, html, LitElement } from "lit-element";
+import {css, customElement, html, LitElement} from "lit-element";
 
 @customElement("home-view")
 export class HomeView extends LitElement {
-  static get styles() {
-    return css``;
-  }
-  render() {
-    return html`
+    static get styles() {
+        return css``;
+    }
+
+    render() {
+        return html`
       <div
         style="margin-left: auto; padding: var(--lumo-space-r-l); flex-direction: column; max-width: 840px; display: flex; margin-right: auto;"
       >
@@ -52,5 +53,5 @@ export class HomeView extends LitElement {
         </div>
       </div>
     `;
-  }
+    }
 }

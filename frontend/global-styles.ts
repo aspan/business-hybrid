@@ -1,8 +1,8 @@
 import "@vaadin/vaadin-lumo-styles";
 import "@vaadin/vaadin-lumo-styles/badge";
 
-import { unsafeCSS, css } from "lit-element";
-import { CSSModule } from "./css-utils";
+import {css, unsafeCSS} from "lit-element";
+import {CSSModule} from "./css-utils";
 
 let globalStyles = "";
 globalStyles += require("./styles/styles.css").default;
@@ -17,20 +17,20 @@ globalStyles += require("./styles/misc/box-shadow-borders.css").default;
 globalStyles += require("./styles/components/list-item.css").default;
 
 const globalCss = [
-  css`
+    css`
     ${unsafeCSS(globalStyles)}
   `,
-  CSSModule("lumo-color"),
-  CSSModule("lumo-typography")
+    CSSModule("lumo-color"),
+    CSSModule("lumo-typography")
 ];
 
 const registerGlobalStyles = () => {
-  const cs = document.createElement("custom-style");
-  const s = document.createElement("style");
-  s.setAttribute("include", "lumo-badge lumo-typography lumo-color");
-  s.innerHTML = globalStyles;
-  cs.appendChild(s);
-  document.head.appendChild(cs);
+    const cs = document.createElement("custom-style");
+    const s = document.createElement("style");
+    s.setAttribute("include", "lumo-badge lumo-typography lumo-color");
+    s.innerHTML = globalStyles;
+    cs.appendChild(s);
+    document.head.appendChild(cs);
 };
 
-export { globalCss, registerGlobalStyles };
+export {globalCss, registerGlobalStyles};

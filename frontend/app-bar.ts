@@ -1,12 +1,12 @@
-import { css, customElement, html, LitElement } from "lit-element";
-import { globalCss } from "./global-styles";
+import {css, customElement, html, LitElement} from "lit-element";
+import {globalCss} from "./global-styles";
 
 @customElement("app-bar")
 export class AppBar extends LitElement {
-  static get styles() {
-    return [
-      globalCss,
-      css`
+    static get styles() {
+        return [
+            globalCss,
+            css`
         .app-bar {
           background-color: var(--lumo-base-color);
           box-shadow: var(--lumo-box-shadow-s);
@@ -105,10 +105,11 @@ export class AppBar extends LitElement {
           }
         }
       `
-    ];
-  }
-  render() {
-    return html`
+        ];
+    }
+
+    render() {
+        return html`
       <div class="app-bar" theme="dark" style="display: flex;">
         <div
           class="app-bar__container"
@@ -150,10 +151,11 @@ export class AppBar extends LitElement {
         </div>
       </div>
     `;
-  }
-  openMenu() {
-    this.dispatchEvent(
-      new CustomEvent("toggle-menu", { bubbles: true, composed: true })
-    );
-  }
+    }
+
+    openMenu() {
+        this.dispatchEvent(
+            new CustomEvent("toggle-menu", {bubbles: true, composed: true})
+        );
+    }
 }

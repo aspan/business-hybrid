@@ -1,15 +1,15 @@
-import { css, customElement, html, LitElement, property } from "lit-element";
-import { globalCss } from "./global-styles";
+import {css, customElement, html, LitElement, property} from "lit-element";
+import {globalCss} from "./global-styles";
 
 @customElement("transaction-chart")
 export class TransactionChart extends LitElement {
-  @property({ type: Array })
-  values?: number[];
+    @property({type: Array})
+    values?: number[];
 
-  static get styles() {
-    return [
-      globalCss,
-      css`
+    static get styles() {
+        return [
+            globalCss,
+            css`
         :host {
           width: 100%;
           overflow: hidden;
@@ -18,27 +18,28 @@ export class TransactionChart extends LitElement {
           height: 100%;
         }
       `
-    ];
-  }
-  render() {
-    return html`
+        ];
+    }
+
+    render() {
+        return html`
       <vaadin-chart
         type="areaspline"
         title="2019"
         no-legend
         .categories=${[
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec"
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
         ]}
         ><vaadin-chart-series
           unit="Number of Processed Transactions"
@@ -46,5 +47,5 @@ export class TransactionChart extends LitElement {
         ></vaadin-chart-series>
       </vaadin-chart>
     `;
-  }
+    }
 }

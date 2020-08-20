@@ -1,9 +1,10 @@
 package org.vaadin.artur.it;
 
+import org.junit.Test;
+
 import com.vaadin.flow.component.grid.testbench.GridElement;
 import com.vaadin.flow.component.grid.testbench.GridTHTDElement;
 import com.vaadin.testbench.TestBenchElement;
-import org.junit.Test;
 
 public class AccountsIT extends AbstractIT {
 

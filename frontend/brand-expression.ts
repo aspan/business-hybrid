@@ -1,20 +1,21 @@
-import { LitElement, customElement, html, property, css } from "lit-element";
-import { globalCss } from "./global-styles";
+import {css, customElement, html, LitElement, property} from "lit-element";
+import {globalCss} from "./global-styles";
+
 @customElement("brand-expression")
 export class BrandExpression extends LitElement {
-  @property()
-  text: string = "";
-  @property({ type: Boolean })
-  open: boolean = false;
-  @property({ type: Boolean })
-  rail: boolean = false;
-  @property({ type: Boolean })
-  isMouseOver: boolean = false;
+    @property()
+    text: string = "";
+    @property({type: Boolean})
+    open: boolean = false;
+    @property({type: Boolean})
+    rail: boolean = false;
+    @property({type: Boolean})
+    isMouseOver: boolean = false;
 
-  static get styles() {
-    return [
-      globalCss,
-      css`
+    static get styles() {
+        return [
+            globalCss,
+            css`
         .brand-expression {
           align-items: center;
           box-shadow: inset 0 -1px var(--lumo-contrast-10pct);
@@ -41,10 +42,11 @@ export class BrandExpression extends LitElement {
           }
         }
       `
-    ];
-  }
-  render() {
-    return html`
+        ];
+    }
+
+    render() {
+        return html`
       <div class="brand-expression" ?open="${this.open}" ?rail="${this.rail}" ?isMouseOver="${this.isMouseOver}">
         <img
           class="brand-expression__logo"
@@ -54,5 +56,5 @@ export class BrandExpression extends LitElement {
         <label class="h3 brand-expression__title">${this.text}</label>
       </div>
     `;
-  }
+    }
 }

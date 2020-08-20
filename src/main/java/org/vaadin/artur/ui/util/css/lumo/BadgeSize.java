@@ -2,16 +2,16 @@ package org.vaadin.artur.ui.util.css.lumo;
 
 public enum BadgeSize {
 
-	S("small"), M("medium");
+    S("small"), M("medium");
 
-	private String style;
+    private String style;
 
-	BadgeSize(String style) {
-		this.style = style;
-	}
+    BadgeSize(String style) {
+        this.style = style;
+    }
 
-	public String getThemeName() {
-		return style;
-	}
+    public String getThemeName() {
+        return style;
+    }
 
 }

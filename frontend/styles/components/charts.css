@@ -1,53 +1,53 @@
 .highcharts-axis-title {
-  fill: var(--lumo-secondary-text-color) !important;;
+    fill: var(--lumo-secondary-text-color) !important;;
 }
 
 .highcharts-axis-labels {
-  fill: var(--lumo-tertiary-text-color) !important;;
+    fill: var(--lumo-tertiary-text-color) !important;;
 }
 
 .highcharts-axis-line,
 .highcharts-tick {
-  stroke: var(--lumo-contrast-30pct);
+    stroke: var(--lumo-contrast-30pct);
 }
 
 .highcharts-area {
-  fill-opacity: 0.5 !important;
+    fill-opacity: 0.5 !important;
 }
 
 :host(.pending) .highcharts-color-0,
 :host(.outstanding) .highcharts-color-0 {
-  fill: rgb(255, 194, 122);
+    fill: rgb(255, 194, 122);
 }
 
 :host(.confirmed) .highcharts-color-0,
 :host(.paid) .highcharts-color-0 {
-  fill: var(--lumo-success-text-color);
+    fill: var(--lumo-success-text-color);
 }
 
 :host(.submitted) .highcharts-color-0,
 :host(.open) .highcharts-color-0 {
-  fill: var(--lumo-primary-text-color);
+    fill: var(--lumo-primary-text-color);
 }
 
 :host(.failed) .highcharts-color-0,
 :host(.overdue) .highcharts-color-0 {
-  fill: var(--lumo-error-text-color);
+    fill: var(--lumo-error-text-color);
 }
 
 .highcharts-background {
-  fill: transparent !important;;
+    fill: transparent !important;;
 }
 
 .highcharts-container {
-  font-family: inherit !important;
+    font-family: inherit !important;
 }
 
 .highcharts-data-label {
-  font-size: inherit !important;;
-  font-weight: inherit !important;;
+    font-size: inherit !important;;
+    font-weight: inherit !important;;
 }
 
-.highcharts-yaxis-grid  {
-  display: none !important;;
+.highcharts-yaxis-grid {
+    display: none !important;;
 }

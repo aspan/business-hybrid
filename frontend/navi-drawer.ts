@@ -1,37 +1,30 @@
-import {
-  LitElement,
-  customElement,
-  html,
-  css,
-  query,
-  property
-} from "lit-element";
+import {css, customElement, html, LitElement, property, query} from "lit-element";
 //@ts-ignore
-import { addSwipeAway } from "./swipe-away";
+import {addSwipeAway} from "./swipe-away";
 import "./brand-expression";
 import "./navi-menu";
 
 @customElement("navi-drawer")
 export class NaviDrawer extends LitElement {
-  @query(".navi-drawer__content")
-  mainContent: any;
-  @query(".navi-drawer__scrim")
-  scrim: any;
-  @property({ type: Boolean, reflect: true })
-  open: boolean = false;
-  @property()
-  railButtonText: string = "Collapse";
-  @property()
-  railButtonIcon: string = "vaadin:chevron-left-small";
-  @property()
-  railButtonAriaLabel: string = "Collapse menu";
-  @property({ type: Boolean, reflect: true })
-  rail: boolean = false;
-  @property({ type: Boolean })
-  isMouseOver: boolean = false;
+    @query(".navi-drawer__content")
+    mainContent: any;
+    @query(".navi-drawer__scrim")
+    scrim: any;
+    @property({type: Boolean, reflect: true})
+    open: boolean = false;
+    @property()
+    railButtonText: string = "Collapse";
+    @property()
+    railButtonIcon: string = "vaadin:chevron-left-small";
+    @property()
+    railButtonAriaLabel: string = "Collapse menu";
+    @property({type: Boolean, reflect: true})
+    rail: boolean = false;
+    @property({type: Boolean})
+    isMouseOver: boolean = false;
 
-  static get styles() {
-    return css`
+    static get styles() {
+        return css`
       .navi-drawer {
         z-index: 2;
         height: 100%;
@@ -161,9 +154,10 @@ export class NaviDrawer extends LitElement {
         }
       }
     `;
-  }
-  render() {
-    return html`
+    }
+
+    render() {
+        return html`
       <div class="navi-drawer" ?open="${this.open}" ?rail="${this.rail}">
         <div class="navi-drawer__scrim" @click="${() => this._close()}"></div>
         <div class="navi-drawer__content">
@@ -183,84 +177,85 @@ export class NaviDrawer extends LitElement {
         </div>
       </div>
     `;
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    window.addEventListener("toggle-menu", () => this.toggle());
-    window.addEventListener("vaadin-router-location-changed", () => {
-      // Close menu when navigating on mobile
-      if (this.open) this._close();
-    });
-  }
-
-  firstUpdated(_changedProperties: Map<string | number | symbol, unknown>) {
-    super.firstUpdated(_changedProperties);
-    addSwipeAway(
-      this.mainContent,
-      () => {
-        this._close();
-      },
-      this.scrim
-    );
-    this.addEventListener('mouseover', this.mouseOverHandler);
-    this.addEventListener('mouseout', this.mouseOutHandler);
-  }
-
-  toggle() {
-    if (this.open) {
-      this._close();
-    } else {
-      this._open();
     }
-  }
 
-  _open() {
-    this.open = true;
-  }
-
-  _close() {
-    this.open = false;
-    this._applyIOS122Workaround();
-  }
-
-  _applyIOS122Workaround() {
-    // iOS 12.2 sometimes fails to animate the menu away.
-    // It should be gone after 240ms
-    // This will make sure it disappears even when the browser fails.
-    var originalStyle = getComputedStyle(this.mainContent).transitionProperty;
-    setTimeout(() => {
-      this.mainContent.style.transitionProperty = "padding";
-      requestAnimationFrame(() => {
-        this.mainContent.style.transitionProperty = originalStyle;
-      });
-    }, 250);
-  }
-
-  mouseOverHandler() {
-    this.isMouseOver = true;
-  }
-  mouseOutHandler() {
-    this.isMouseOver = false;
-  }
-
-  _toggleRailMode() {
-    if (this.rail) {
-      this.rail = false;
-      this.railButtonIcon = "vaadin:chevron-left-small";
-      this.railButtonText = "Collapse";
-      this.railButtonAriaLabel = "Collapse menu";
-    } else {
-      this.rail = true;
-      this.railButtonIcon = "vaadin:chevron-right-small";
-      this.railButtonText = "Expand";
-      this.railButtonAriaLabel = "Expand menu";
-      var originalStyle = getComputedStyle(this).pointerEvents;
-      this.style.pointerEvents = "none";
-
-      setTimeout(() => {
-        this.style.pointerEvents = originalStyle;
-      }, 170);
+    connectedCallback() {
+        super.connectedCallback();
+        window.addEventListener("toggle-menu", () => this.toggle());
+        window.addEventListener("vaadin-router-location-changed", () => {
+            // Close menu when navigating on mobile
+            if (this.open) this._close();
+        });
     }
-  }
+
+    firstUpdated(_changedProperties: Map<string | number | symbol, unknown>) {
+        super.firstUpdated(_changedProperties);
+        addSwipeAway(
+            this.mainContent,
+            () => {
+                this._close();
+            },
+            this.scrim
+        );
+        this.addEventListener('mouseover', this.mouseOverHandler);
+        this.addEventListener('mouseout', this.mouseOutHandler);
+    }
+
+    toggle() {
+        if (this.open) {
+            this._close();
+        } else {
+            this._open();
+        }
+    }
+
+    _open() {
+        this.open = true;
+    }
+
+    _close() {
+        this.open = false;
+        this._applyIOS122Workaround();
+    }
+
+    _applyIOS122Workaround() {
+        // iOS 12.2 sometimes fails to animate the menu away.
+        // It should be gone after 240ms
+        // This will make sure it disappears even when the browser fails.
+        var originalStyle = getComputedStyle(this.mainContent).transitionProperty;
+        setTimeout(() => {
+            this.mainContent.style.transitionProperty = "padding";
+            requestAnimationFrame(() => {
+                this.mainContent.style.transitionProperty = originalStyle;
+            });
+        }, 250);
+    }
+
+    mouseOverHandler() {
+        this.isMouseOver = true;
+    }
+
+    mouseOutHandler() {
+        this.isMouseOver = false;
+    }
+
+    _toggleRailMode() {
+        if (this.rail) {
+            this.rail = false;
+            this.railButtonIcon = "vaadin:chevron-left-small";
+            this.railButtonText = "Collapse";
+            this.railButtonAriaLabel = "Collapse menu";
+        } else {
+            this.rail = true;
+            this.railButtonIcon = "vaadin:chevron-right-small";
+            this.railButtonText = "Expand";
+            this.railButtonAriaLabel = "Expand menu";
+            var originalStyle = getComputedStyle(this).pointerEvents;
+            this.style.pointerEvents = "none";
+
+            setTimeout(() => {
+                this.style.pointerEvents = originalStyle;
+            }, 170);
+        }
+    }
 }

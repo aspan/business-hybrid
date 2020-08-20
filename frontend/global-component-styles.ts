@@ -1,28 +1,24 @@
-import {
-  registerStyles,
-  css
-  //@ts-ignore
-} from "@vaadin/vaadin-themable-mixin/register-styles.js";
-import { unsafeCSS } from "lit-element";
+import {css, registerStyles} from "@vaadin/vaadin-themable-mixin/register-styles.js";
+import {unsafeCSS} from "lit-element";
 
 registerStyles(
-  "vaadin-chart",
-  css`
+    "vaadin-chart",
+    css`
     ${unsafeCSS(require("./styles/components/charts.css").default)}
   `,
-  { include: ["vaadin-chart-default-theme"] }
+    {include: ["vaadin-chart-default-theme"]}
 );
 registerStyles(
-  "vaadin-button",
-  css`
+    "vaadin-button",
+    css`
     ${unsafeCSS(
-      require("./styles/components/floating-action-button.css").default
+        require("./styles/components/floating-action-button.css").default
     )}
   `
 );
 registerStyles(
-  "vaadin-grid",
-  css`
+    "vaadin-grid",
+    css`
     ${unsafeCSS(require("./styles/components/grid.css").default)}
   `
 );

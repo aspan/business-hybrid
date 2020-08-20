@@ -1,29 +1,29 @@
-import { css, customElement, html, LitElement, property } from "lit-element";
-import { globalCss } from "./global-styles";
+import {css, customElement, html, LitElement, property} from "lit-element";
+import {globalCss} from "./global-styles";
 import "@vaadin/vaadin-board";
 import "@vaadin/vaadin-tabs";
 import "./payment-chart";
 import "./transaction-chart";
-import { ifDefined } from "lit-html/directives/if-defined";
+import {ifDefined} from "lit-html/directives/if-defined";
 import * as StatisticsEndpoint from "./generated/StatisticsEndpoint";
 
 @customElement("statistics-view")
 export class StatisticsView extends LitElement {
-  @property({ type: Number })
-  pending?: number;
-  @property({ type: Number })
-  submitted?: number;
-  @property({ type: Number })
-  confirmed?: number;
-  @property({ type: Number })
-  failed?: number;
-  @property({ type: Array })
-  transactionValues?: number[];
+    @property({type: Number})
+    pending?: number;
+    @property({type: Number})
+    submitted?: number;
+    @property({type: Number})
+    confirmed?: number;
+    @property({type: Number})
+    failed?: number;
+    @property({type: Array})
+    transactionValues?: number[];
 
-  static get styles() {
-    return [
-      globalCss,
-      css`
+    static get styles() {
+        return [
+            globalCss,
+            css`
         /* Payments */
         vaadin-board-row.small payment-chart:not(:last-child) {
           box-shadow: inset 0 -1px var(--lumo-contrast-10pct);
@@ -85,10 +85,11 @@ export class StatisticsView extends LitElement {
           height: 400px;
         }
       `
-    ];
-  }
-  render() {
-    return html`
+        ];
+    }
+
+    render() {
+        return html`
       <div style="flex-direction: column; display: flex; align-items: center;">
         <div
           style="max-width: 1024px; display: block; padding-left: var(--lumo-space-r-l); width: 100%; margin-top: var(--lumo-space-l); box-sizing: border-box; padding-right: var(--lumo-space-r-l);"
@@ -330,15 +331,16 @@ export class StatisticsView extends LitElement {
         ></vaadin-board-row>
       </div>
     `;
-  }
-  async connectedCallback() {
-    super.connectedCallback();
+    }
 
-    this.transactionValues = await StatisticsEndpoint.getTransactionData(2019);
-    const statusData = await StatisticsEndpoint.getPaymentData();
-    this.pending = statusData[0];
-    this.submitted = statusData[1];
-    this.confirmed = statusData[2];
-    this.failed = statusData[3];
-  }
+    async connectedCallback() {
+        super.connectedCallback();
+
+        this.transactionValues = await StatisticsEndpoint.getTransactionData(2019);
+        const statusData = await StatisticsEndpoint.getPaymentData();
+        this.pending = statusData[0];
+        this.submitted = statusData[1];
+        this.confirmed = statusData[2];
+        this.failed = statusData[3];
+    }
 }

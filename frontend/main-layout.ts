@@ -1,11 +1,11 @@
-import {LitElement, customElement, css, html} from "lit-element";
+import {css, customElement, html, LitElement} from "lit-element";
 import "./navi-drawer";
 import "./app-bar";
 
 @customElement("main-layout")
 export class MainLayout extends LitElement {
-  static get styles() {
-    return css`
+    static get styles() {
+        return css`
       .root {
         background-color: var(--lumo-contrast-5pct);
       }
@@ -24,10 +24,10 @@ export class MainLayout extends LitElement {
          padding-left: var(--navi-drawer-rail-width);
       }
     `;
-  }
+    }
 
-  render() {
-    return html`
+    render() {
+        return html`
       <div
         class="root"
         style="flex-direction: column; display: flex; width: 100%; height: 100%;"
@@ -55,5 +55,5 @@ export class MainLayout extends LitElement {
         </div>
       </div>
     `;
-  }
+    }
 }

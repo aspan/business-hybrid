@@ -1,64 +1,65 @@
-import { css, customElement, html, LitElement, property } from "lit-element";
-import { globalCss } from "./global-styles";
-import { Router } from "@vaadin/router";
+import {css, customElement, html, LitElement, property} from "lit-element";
+import {globalCss} from "./global-styles";
+import {Router} from "@vaadin/router";
 import "./navi-item";
 import "@vaadin/vaadin-icons";
 import "@vaadin/vaadin-button";
-import { router } from "./index";
+import {router} from "./index";
 
 export interface MenuItem {
-  path?: string;
-  icon?: string;
-  text: string;
-  children?: MenuItem[];
-  expanded?: boolean;
-  highlight?: boolean;
+    path?: string;
+    icon?: string;
+    text: string;
+    children?: MenuItem[];
+    expanded?: boolean;
+    highlight?: boolean;
 }
 
 @customElement("navi-menu")
 export class NaviMenu extends LitElement {
-  @property({ type: Array })
-  items: MenuItem[] = [
-    {
-      path: "",
-      icon: "vaadin:home",
-      text: "Home"
-    },
-    {
-      path: "accounts",
-      icon: "vaadin:institution",
-      text: "Accounts"
-    },
-    {
-      path: "payments",
-      icon: "vaadin:credit-card",
-      text: "Payments"
-    },
-    {
-      path: "statistics",
-      icon: "vaadin:chart",
-      text: "Statistics"
-    },
-    {
-      icon: "vaadin:users",
-      text: "Personnel",
-      expanded: true,
-      children: [
+    @property({type: Array})
+    items: MenuItem[] = [
         {
-          path: "accountants",
-          text: "Accountants"
+            path: "",
+            icon: "vaadin:home",
+            text: "Home"
         },
         {
-          path: "managers",
-          text: "Managers"
+            path: "accounts",
+            icon: "vaadin:institution",
+            text: "Accounts"
+        },
+        {
+            path: "payments",
+            icon: "vaadin:credit-card",
+            text: "Payments"
+        },
+        {
+            path: "statistics",
+            icon: "vaadin:chart",
+            text: "Statistics"
+        },
+        {
+            icon: "vaadin:users",
+            text: "Personnel",
+            expanded: true,
+            children: [
+                {
+                    path: "accountants",
+                    text: "Accountants"
+                },
+                {
+                    path: "managers",
+                    text: "Managers"
+                }
+            ]
         }
-      ]
-    }
-  ];
-  static get styles() {
-    return [
-      globalCss,
-      css`
+    ];
+
+    static get styles() {
+        return [
+            globalCss,
+            css`
         .navi-menu {
           margin-bottom: var(--lumo-space-s);
           margin-top: var(--lumo-space-s);
@@ -161,21 +162,21 @@ export class NaviMenu extends LitElement {
           margin-right: var(--lumo-space-s);
         }
       `
-    ];
-  }
+        ];
+    }
 
-  render() {
-    return html`
+    render() {
+        return html`
       <div class="navi-menu">
         ${this.items.map(
-          item => html`
+            item => html`
             <navi-item
               @click=${() => this.expand(item)}
               .item=${item}
             ></navi-item>
             ${item.children
-              ? item.children.map(
-                  child => html`
+                ? item.children.map(
+                    child => html`
                     <navi-item
                       ?hidden=${!item.expanded}
                       level="1"
@@ -183,44 +184,47 @@ export class NaviMenu extends LitElement {
                     ></navi-item>
                   `
                 )
-              : ``}
+                : ``}
           `
         )}
       </div>
     `;
-  }
-  expand(item: MenuItem) {
-    item.expanded = !item.expanded;
-    this.requestUpdate("items");
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    this.updateHighlight();
-    window.addEventListener("vaadin-router-location-changed", () => {
-      this.updateHighlight();
-    });
-  }
-  updateHighlight() {
-    const location = router.location;
-
-    this.items.forEach(item => {
-      this.setItemHighlight(item, location);
-      if (item.children) {
-        item.children.forEach(child => this.setItemHighlight(child, location));
-      }
-    });
-    this.requestUpdate("items");
-  }
-
-  setItemHighlight(item: MenuItem, location: Router.Location) {
-    let path = location.pathname;
-    if (path.startsWith(location.baseUrl)) {
-      path = path.substring(location.baseUrl.length);
-    }
-    if (path.startsWith("/")) {
-      path = path.substring(1);
     }
 
-    item.highlight = item.path == path;
-  }
+    expand(item: MenuItem) {
+        item.expanded = !item.expanded;
+        this.requestUpdate("items");
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+        this.updateHighlight();
+        window.addEventListener("vaadin-router-location-changed", () => {
+            this.updateHighlight();
+        });
+    }
+
+    updateHighlight() {
+        const location = router.location;
+
+        this.items.forEach(item => {
+            this.setItemHighlight(item, location);
+            if (item.children) {
+                item.children.forEach(child => this.setItemHighlight(child, location));
+            }
+        });
+        this.requestUpdate("items");
+    }
+
+    setItemHighlight(item: MenuItem, location: Router.Location) {
+        let path = location.pathname;
+        if (path.startsWith(location.baseUrl)) {
+            path = path.substring(location.baseUrl.length);
+        }
+        if (path.startsWith("/")) {
+            path = path.substring(1);
+        }
+
+        item.highlight = item.path == path;
+    }
 }
